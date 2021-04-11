@@ -4,21 +4,13 @@
    {% load static %}
 
    {% include 'head.html' %}
-    <style>
-       html,
-       body,
-       header,
-       .jarallax {
-       height: 1000px;
-       min-height: 800px;
-       }
-    </style>
+    
  
    <body>
       <!-- Intro Section -->
       
       <div class="view jarallax" data-jarallax='{"speed": 0.2}'
-         style="background-image: url('https://cdn.pixabay.com/photo/2018/03/07/18/42/menu-3206749_960_720.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;margin-top:-100px;">
+         --></div>
          <div class="mask rgba-indigo-light">
             <div class="container h-100 d-flex justify-content-center align-items-center">
                <div class="row">
@@ -28,16 +20,16 @@
                            <li>
                               <h1 class="display-4 font-weight-bold white-text wow fadeIn"
                                  data-wow-delay="0.3s">
-                                 <strong>What are you gonna cook today?</strong>
+                                 <strong>Know what's happening around you</strong>
                               </h1>
                            </li>
                            <li>
                               <h5 class="white-text description mb-5 wow fadeIn" data-wow-delay="0.4s">
-                                 Search for healthy recipes | {{total_recipes}} recipes
+                                 Search for activities around | {{total_activity}} activity
                               </h5>
                            </li>
                            <hr>
-                           <form action="" method="get">
+                           <form action="{% url 'search' %}" method="get">
                               <!--Accordion wrapper-->
                               <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                                  <!-- Accordion card -->
@@ -57,36 +49,36 @@
                                        <div class="card-body">
                                           <!-- Material checked -->
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="breakfast" name="breakfast">
-                                             <label class="form-check-label" for="breakfast">Breakfast</label>
+                                             <input type="radio" class="form-check-input" value="on" id="houses" name="houses">
+                                             <label class="form-check-label" for="houses">houses</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="appetizers" name="appetizers">
-                                             <label class="form-check-label" for="appetizers">Appetizers</label>
+                                             <input type="radio" class="form-check-input" value="on" id="facilities" name="facilities">
+                                             <label class="form-check-label" for="facilities">facilities</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="lunch" name="lunch">
-                                             <label class="form-check-label" for="lunch">Lunch</label>
+                                             <input type="radio" class="form-check-input" value="on" id="schools" name="schools">
+                                             <label class="form-check-label" for="schools">schools</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="salads" name="salads">
-                                             <label class="form-check-label" for="salads">Salads</label>
+                                             <input type="radio" class="form-check-input" value="on" id="hospitals" name="hospitals">
+                                             <label class="form-check-label" for="hospitals">hospitals</label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="dinner" name="dinner">
-                                             <label class="form-check-label" for="dinner">Dinner</label>
+                                             <label class="form-check-label" for="dinner">events</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="dessert" name="dessert">
-                                             <label class="form-check-label" for="dessert">Dessert</label>
+                                             <input type="radio" class="form-check-input" value="on" id="neighbours" name="neighbours">
+                                             <label class="form-check-label" for="neighbours">neighbours</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="easy" name="easy">
-                                             <label class="form-check-label" for="easy">Easy</label>
+                                             <input type="radio" class="form-check-input" value="on" id="markets" name="markets">
+                                             <label class="form-check-label" for="markets">markets</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input type="radio" class="form-check-input" value="on" id="hard" name="hard">
-                                             <label class="form-check-labell" for="hard">Hard</label>
+                                             <input type="radio" class="form-check-input" value="on" id="recreation" name="recreation">
+                                             <label class="form-check-labell" for="recreation">recreation</label>
                                           </div>
                                        </div>
                                     </div>
@@ -99,7 +91,7 @@
                                     <label for="form51" class="">Search</label>
                                  </div>
                                  <button class="btn btn-white btn-rounded btn-lg orange-text font-weight-bold ml-lg-0" type="submit">
-                                 <i class="fas fa-search orange-text mr-2" aria-hidden="true"></i> Get Recipes</button>
+                                 <i class="fas fa-search orange-text mr-2" aria-hidden="true"></i> Get Results</button>
                               </li>
                         </ul>
                      </div>
@@ -114,7 +106,7 @@
          <!-- Copyright -->
          <div class="footer-copyright text-center py-3">
             <div class="container-fluid">
-               © 2019 Copyright: <a href="https://www.fiverr.com/selmiabderrahim" target="_blank"> Selmi Abderrahim </a>
+               © 2021 Copyright: <a href="{% url 'home' %}" target="_blank"> jirani </a>
             </div>
          </div>
          <!-- Copyright -->
