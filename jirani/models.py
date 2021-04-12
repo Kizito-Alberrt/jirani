@@ -7,7 +7,7 @@ class neighbourhood(models.Model):
     name = models.CharField(max_length=200)
     location = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
- 
+    
 
     def __str__(self):
         return self.location

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'members',
     'jirani',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,8 +121,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR= [BASE_DIR / 'static']
+MEDIA_URL = '/images/'
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+
+
+MEDIA_ROOT = BASE_DIR / 'static/images'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOT_REDIRECT_URL = 'home'

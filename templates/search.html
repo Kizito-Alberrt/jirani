@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include 'head.html' %}
-   <body style="min-height:800px;background-image: url(https://cdn.pixabay.com/photo/2016/02/05/15/34/pasta-1181189__340.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+   <body>
       <div class="mask rgba-gradient7">
          <div class="container h-100 d-flex justify-content-center align-items-center">
             <!-- Grid row -->
@@ -29,20 +29,20 @@
 
 
 
-                     {% for recipe in results %}
+                     {% for neighbourhood in results %}
                   <!-- Grid column -->
                   <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                      <!-- Card -->
                      <div class="card hoverable">
                         <!-- Card image -->
-                        <img class="card-img-top" src="{{recipe.image}}" alt="Card image cap">
+                        <img class="card-img-top" src="{{neighbourhood.image}}" alt="Card image cap">
                         <!-- Card content -->
                         <div class="card-body">
                            <!-- Title -->
-                           <a href="{{recipe.get_url}}" class="black-text">{{recipe.title}}</a>
+                           <a href="{{neighbourhood.get_url}}" class="black-text">{{neighbourhood.title}}</a>
                            <!-- Text -->
-                           <p class="card-title text-muted font-small mt-3 mb-2">{{recipe.description|safe|slice:":150"}}</p>
-                           <a type="button" class="btn btn-flat text-primary p-0 mx-0" href="{{recipe.get_url}}">Read more<i class="fa fa-angle-right ml-2"></i></a>
+                           <p class="card-title text-muted font-small mt-3 mb-2">{{neighbourhood.description|safe|slice:":150"}}</p>
+                           <a type="button" class="btn btn-flat text-primary p-0 mx-0" href="{{neighbourhood.get_url}}">Read more<i class="fa fa-angle-right ml-2"></i></a>
                         </div>
                      </div>
                      <!-- Card -->

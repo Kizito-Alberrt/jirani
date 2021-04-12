@@ -1,14 +1,17 @@
 
+from django.http import request
 from django.shortcuts import render, get_object_or_404
 from .models import neighbourhood
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+
+
 # Create your views here.
 def home(request):
     total_activity = neighbourhood.objects.all().count()
     context = {
-        'title': 'homepage',
+        
         'total_activity': total_activity,
     }
 
@@ -17,11 +20,11 @@ def home(request):
     return render(request, 'home.html',context)
 
 def search(request):
-    total_activity = neighbourhood.objects.all()
+    activity = neighbourhood.objects.all()
 
     if 'search' in request.GET:
         query = request.GET.get('search')
-        queryset = neighbourhood.filter(Q(title__icontains=query))
+        queryset = activity.filter(Q(user__icontains='search'))
 
     if request.GET.get('houses'):
         results = queryset.filter(Q(topic__icontains='houses'))
@@ -76,3 +79,36 @@ def detail(request, slug):
         "recipe":recipe,
     }
     return render(request, "detail.html", context)
+
+def houses(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'houses.html')
+
+def schools(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'schools.html')
+
+def hospitals(request):
+    return render(request, 'hospitals.html')
+
+    
+def facilities(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'facilities.html')
+
+def markets(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'markets.html')
+
+def neighbours(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'neighbours.html')
+
+def recreation(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'recreation.html')
+
+def events(request):
+    neighbours = neighbourhood.objects.all()
+    return render(request, 'events.html')
+    

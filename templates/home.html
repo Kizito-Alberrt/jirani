@@ -4,13 +4,29 @@
    {% load static %}
 
    {% include 'head.html' %}
-    
+   <style>
+      html,
+      body,
+      header,
+      .jarallax {
+      height: 1000px;
+      min-height: 800px;
+      }
+   </style>
  
    <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+           <a class="navbar-brand" href="{% url 'login' %}">Login</a><a class="navbar-brand" href="{% url 'register' %}">Register</a>
+         </div>
+         
+       
+
+      </nav>
       <!-- Intro Section -->
       
       <div class="view jarallax" data-jarallax='{"speed": 0.2}'
-         --></div>
+      style="background-image: url('../static/img 21.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;margin-top:-100px;">
          <div class="mask rgba-indigo-light">
             <div class="container h-100 d-flex justify-content-center align-items-center">
                <div class="row">
@@ -20,6 +36,12 @@
                            <li>
                               <h1 class="display-4 font-weight-bold white-text wow fadeIn"
                                  data-wow-delay="0.3s">
+                                 <br>
+                                 <br>
+                           
+                                 <strong>Jirani</strong>
+                                 <br>
+
                                  <strong>Know what's happening around you</strong>
                               </h1>
                            </li>
@@ -50,49 +72,42 @@
                                           <!-- Material checked -->
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="houses" name="houses">
-                                             <label class="form-check-label" for="houses">houses</label>
+                                             <label class="form-check-label" for="houses"> <a class="nav-link" href="{% url 'houses' %}">houses</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="facilities" name="facilities">
-                                             <label class="form-check-label" for="facilities">facilities</label>
+                                             <label class="form-check-label" for="facilities"><a class="nav-link" href="{% url 'facilities' %}">facilities</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="schools" name="schools">
-                                             <label class="form-check-label" for="schools">schools</label>
+                                             <label class="form-check-label" for="schools"><a class="nav-link" href="{% url 'schools' %}">schools</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="hospitals" name="hospitals">
-                                             <label class="form-check-label" for="hospitals">hospitals</label>
+                                             <label class="form-check-label" for="hospitals"><a class="nav-link" href="{% url 'hospitals' %}">hospitals</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="dinner" name="dinner">
-                                             <label class="form-check-label" for="dinner">events</label>
+                                             <label class="form-check-label" for="dinner"><a class="nav-link" href="{% url 'events' %}">events</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="neighbours" name="neighbours">
-                                             <label class="form-check-label" for="neighbours">neighbours</label>
+                                             <label class="form-check-label" for="neighbours"><a class="nav-link" href="{% url 'neighbours' %}">neighbours</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="markets" name="markets">
-                                             <label class="form-check-label" for="markets">markets</label>
+                                             <label class="form-check-label" for="markets"><a class="nav-link" href="{% url 'markets' %}">markets</a></label>
                                           </div>
                                           <div class="form-check form-check-inline">
                                              <input type="radio" class="form-check-input" value="on" id="recreation" name="recreation">
-                                             <label class="form-check-labell" for="recreation">recreation</label>
+                                             <label class="form-check-labell" for="recreation"><a class="nav-link" href="{% url 'recreation' %}">recreation</a></label>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
                               </div>
                               <!-- Accordion card -->
-                              <li class="wow fadeIn" data-wow-delay="0.4s">
-                                 <div class="md-form mb-0">
-                                    <input type="text" id="form51" class="form-control" name="search">
-                                    <label for="form51" class="">Search</label>
-                                 </div>
-                                 <button class="btn btn-white btn-rounded btn-lg orange-text font-weight-bold ml-lg-0" type="submit">
-                                 <i class="fas fa-search orange-text mr-2" aria-hidden="true"></i> Get Results</button>
-                              </li>
+                       
                         </ul>
                      </div>
                   </div>

@@ -1,0 +1,1346 @@
+{% extends 'events.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* all */
+:root {
+  --white: #fff;
+  --black: #222;
+  /* --pink: #f60091; */
+  --grey: #444;
+  --grey2: #959595;
+  --grey-alt: #d1e2e9;
+  --yellow: #ffd800;
+  --green: #59b210;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  background-color: #fff;
+  color: #0c0c0c;
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.container-md {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 0 3rem;
+  }
+
+  .container-md {
+    padding: 0 3rem;
+  }
+}
+/* all */
+/* .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  } */
+  
+  
+  
+  
+  
+  #myInput {
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid rgba(22, 2, 2, 0.705);
+  }
+  
+  
+  #myInput:focus {outline: 3px solid #ddd;}
+  
+ 
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  .show {display:block;}
+  .menu-btn {
+    background-color: #7e32d4;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+ }
+ 
+ .menu-content {
+    display: none;
+    position: absolute;
+    background-color: #017575;
+    min-width: 160px;
+    z-index: 1;
+ }
+ .links {
+    color: rgb(255, 255, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+ }
+ .links:hover {
+    background-color: rgb(8, 107, 46);
+ }
+ .dropdown-menu:hover .menu-btn {
+    background-color: #3e8e41;
+ }
+ /* picturing */
+ .title {
+  margin: 4rem 0 7rem 0;
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 3rem;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+}
+
+.title h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20%;
+  transform: translate(-50%, -50%);
+  background-color: var(--pink);
+  width: 50%;
+  height: 0.4rem;
+  z-index: 1;
+}
+
+/* Product */
+.product-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 7rem 3rem;
+}
+
+.product {
+  height: 48rem;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 300ms ease-in-out;
+}
+
+.product:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.product-header {
+  position: relative;
+  height: 35rem;
+  background-color: #f6f2f1;
+  transition: all 300ms ease-in-out;
+  z-index: 0;
+}
+
+.product-header img {
+  height: 100%;
+}
+
+.product-footer {
+  padding: 2rem 1.6rem 1.6rem 1.6rem;
+}
+
+.product-footer h3 {
+  font-size: 2.2rem;
+}
+
+.rating {
+  color: #43b3d9;
+}
+
+.product-footer .price {
+  color: #02220e;
+  font-size: 2rem;
+}
+
+.product:hover .product-header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 1rem 1rem 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease-in-out;
+  z-index: 1;
+}
+
+.product-header .icons {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translate(0, -50%) scale(0);
+  z-index: 2;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+
+.product-header .icons span {
+  background-color: #fff;
+  font-size: 2.5rem;
+  display: block;
+  border-radius: 50%;
+  padding: 1.5rem 1.6rem;
+  line-height: 2rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.product-header .icons span i {
+  transition: all 500ms ease-in-out;
+}
+
+.product-header .icons span:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.product-header .icons span:hover {
+  background-color: #ff7c9c;
+  color: #fff;
+}
+
+.product:hover .icons {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+.product-header .icons a {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* section  */
+
+.hero-content {
+  position: absolute;
+  top: 35%;
+  transform: translate(25%, -50%);
+}
+
+.hero-content h2 {
+  color: #030007;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-content .discount {
+  color: #0c0c0c;
+}
+
+.hero-content h1 span {
+  color: #0c23f0;
+  font-size: 6rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #f1f1f1, 4px 4px 0 #f1f1f1;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #7e7cfc;
+  padding: 1.2rem 4rem;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 3rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .header .hero-img {
+    right: -20%;
+  }
+
+  .hero-content {
+    transform: translate(20%, -50%);
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content h1 span {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .header {
+    min-height: 70vh;
+  }
+
+  .header .hero-img {
+    height: 40rem;
+    right: -10%;
+  }
+}
+
+@media only screen and (max-width: 567px) {
+  .header {
+    min-height: 100vh;
+  }
+
+  .header .hero-img {
+    height: 40rem;
+    bottom: -15%;
+  }
+
+  .hero-content {
+    top: 40%;
+    transform: translate(15%, -50%);
+  }
+
+  .header .hero-img {
+    right: 0%;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content h1 span {
+    font-size: 4rem;
+  }
+
+  .hero-content a {
+    padding: 1rem 3rem;
+  }
+}
+
+/* fetched */
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+body{ 
+  font-family:'Open Sans', Arial, sans-serif;
+}
+.headings{
+  margin-left:40%;
+  color:green;
+}
+/*navbar*/
+.navbar-collapse{
+  left:70%;
+  position:fixed;
+  padding:5px;
+  margin:10px;
+  top:0%;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.navbar-brand{
+  left:10%;
+}
+/*background image*/
+.bg-landing{
+  width: auto;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.849)), url("./img/img/img 3.jpg")  no-repeat center center ;
+  background-size: cover;
+  
+}
+/*logo font*/
+
+.logo-font{
+  font-family:'Open Sans', Arial, sans-serif;
+  text-transform:uppercase ;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  margin:25px;
+}
+/*listings stylings*/
+.outer{
+  min-width: 100%;
+  height: 80%;
+  background-color:transparent;
+  display: grid;
+  place-items: center;
+}
+.inner{
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  color: white;
+  margin: 10px;
+}
+.outer1{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;  
+}
+.inner1{
+  flex: 1 1 500px;
+  margin: 5px;
+  background:transparent;
+  height: 100%;
+  color: black;
+  width: 100%;
+}
+.landing-txt{
+  color: white;
+}
+.landing-hd{
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 2.5px;
+}
+.landing-p{
+  font-weight: lighter;
+  font-size: 24px;
+  color: whitesmoke;
+}
+.mar-top{
+  margin-top: 70px;
+}
+.mar-top1{
+  margin-top: 10px;
+}
+.mar-top2{
+  margin-top: 40px;
+}
+.mar-left{
+  margin-left: 20px;
+}
+.mar-all1{
+  margin:5px;
+}
+.mar-bot{
+  margin-bottom: 40px;
+}
+.pad-1{
+  width: 100%;
+  height: 150px;
+}
+.pad-auto{
+  width: 100%;
+  height: auto;
+}
+.pad-auto1{
+  width: auto;
+  height: auto;
+}
+.border-trans{
+  border: transparent;
+}
+.welcome-sec{
+  width: auto;
+  height: auto;
+  background: lavender;
+}
+.welcome-p{
+  color: black;
+  margin-top: 20px;
+}
+.welcome-hd{
+  font-weight: 600;
+  font-size: 29px;
+  letter-spacing: 2.5px;
+  color: black;
+}
+/* featured listings images*/
+.h-img1{
+  background:linear-gradient(rgba(19, 61, 13, 0.295),rgba(19, 61, 13, 0.274)), url("../img/house1.jpg") center center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+.h-img2{
+  background:linear-gradient(rgba(19, 61, 13, 0.295),rgba(19, 61, 13, 0.274)), url("../img/house2.jpg") center center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+.h-img3{
+  background:linear-gradient(rgba(19, 61, 13, 0.295),rgba(19, 61, 13, 0.274)), url("../img/house3.jpg") center center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+.h-img4{
+  background:linear-gradient(rgba(253, 193, 13, 0.055),rgba(253, 193, 13, 0.075)), url("../img/house4.jpg") center center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+/*featured listings texts*/
+.small-txt{
+  font-size: 20px;
+  font-family: 'Satisfy';
+  font-weight: 350;
+}
+.smaller-txt{
+  font-size:20px;
+  color:red;
+}
+.large-txt{
+  font-size: 33px;
+  font-weight: 600;
+}
+.list-hd{
+  font-size: 30px;
+  font-weight: 600;
+}
+.list-txt{
+  font-size: 25px;
+  font-family: 'aerial Sans serif';
+  font-weight: 400;
+  letter-spacing: 2.5px;
+}
+.txt-white{
+  color: white;
+}
+.txt-green{
+  color :#218838;
+}
+.txt-black{
+  color: black;
+}
+.txt-lg-ft{
+  font-weight: 900;
+}
+.txt-lg-ft2{
+  font-weight: 900;
+  font-size: 25px;
+}
+
+/*footer*/
+.footer{
+  width: 100%;
+  height: auto;
+  background: #081b0cee;
+}
+.footer-contact{
+  width: 100%;
+  height: 100vh;
+  background: #081b0cee;
+}
+.bg-lavender{
+  background: lavender;
+}
+/*social media icons*/
+.fa {
+  padding: 18px;
+  font-size: 10px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 5px;
+  background: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.849)),
+}
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+background: #3B5998;
+color: white;
+}
+
+.fa-twitter {
+background: #55ACEE;
+color: white;
+}
+
+.fa-google {
+background: #dd4b39;
+color: white;
+}
+
+.fa-linkedin {
+background: #007bb5;
+color: white;
+}
+
+    </style>
+</head>
+<body>
+   
+   
+
+   
+
+    
+
+
+<h2>All available spaces</h2>
+
+<section class="section featured">
+<div class="title">
+  <h1>Mobile houses for sale</h1>
+</div>
+
+<div class="product-center container">
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img  27.jpg" alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#">
+        <h3>Umoja container </h3>
+      </a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price"> from Ksh 700,000 </h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 1.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Saika container</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh 800,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 10.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kayole container</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">from 6000,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 11.jpg"  alt="">
+
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Karen container</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh400,000</h4>
+    </div>
+  
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 12.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kiambu </h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh1,000,000</h4>
+    </div>
+    
+  
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 13.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Mombasa</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh2,000,000</h4>
+  </div>
+  
+</section>
+<section class="section featured">
+<div class="title">
+  <h1>Commercial space</h1>
+</div>
+
+<div class="product-center container">
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 14.jpg" alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#">
+        <h3>spacious offices</h3>
+      </a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price"> </h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 15.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>spacious</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">1000000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 16.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Affordable offices</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">from 30,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 17.jpg"  alt="">
+
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kiambu properties</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh55,000</h4>
+    </div>
+  
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 18.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Nairobi offices</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh75,000</h4>
+    </div>
+    
+  
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 19.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Nakuru offices</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh75,000</h4>
+  </div>
+  
+</section>
+<section class="section featured">
+<div class="title">
+  <h1>House for sale</h1>
+</div>
+
+<div class="product-center container">
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 2.jpg" alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#">
+        <h3>Buruburu 4 bedroom </h3>
+      </a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price"> from Ksh 5,000,000 </h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 20.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Lavington 5 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">10,000,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 21.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kitusuri 6 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">from 30,000,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 22.jpg"  alt="">
+
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Karen 4 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh55,000,000</h4>
+    </div>
+  
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 23.jpg  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Muthaiga 5 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh75,000,000</h4>
+    </div>
+    
+  
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 24.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Ngong 4 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh7,000,000</h4>
+  </div>
+  
+</section>
+<section class="section featured">
+<div class="title">
+  <h1>Multi-unit apartments </h1>
+</div>
+
+<div class="product-center container">
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 25.jpg" alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#">
+        <h3>Buruburu 4 bedroom </h3>
+      </a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price"> from Ksh 90,000 </h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 26.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Lavington 5 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">100,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 28.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kitusuri 6 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">from 50,000</h4>
+    </div>
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 29.jpg"  alt="">
+
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Eldoret 5 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh80,000</h4>
+    </div>
+  
+  </div>
+  <div class="product">
+    <div class="product-header">
+      <img src="../static/img 3.jpg"  alt="">
+      <ul class="icons">
+        <span><i class="bx bx-heart"></i></span>
+        <span><i class="bx bx-shopping-bag"></i></span>
+        <span><i class="bx bx-search"></i></span>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="#"><h3>Kitale 5 bedroom</h3></a>
+      <div class="rating">
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bxs-star"></i>
+        <i class="bx bx-star"></i>
+      </div>
+      <h4 class="price">Ksh30,000</h4>
+    </div>
+    
+  
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 30.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Mombasa 4 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh70,000</h4>
+  </div>
+  
+</section>
+<div class="product-center container">
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 31.jpg" alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#">
+      <h3>Karen houses </h3>
+    </a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price"> from Ksh 130,000,000 </h4>
+  </div>
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 32.jpg  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Lavington 5 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">100,000,000</h4>
+  </div>
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 33.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Kitusuri 6 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">from 50,000,000</h4>
+  </div>
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 34.jpg"  alt="">
+
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Eldoret 5 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh80,000,000</h4>
+  </div>
+
+</div>
+<div class="product">
+  <div class="product-header">
+    <img src="../static/img 35.jpg"  alt="">
+    <ul class="icons">
+      <span><i class="bx bx-heart"></i></span>
+      <span><i class="bx bx-shopping-bag"></i></span>
+      <span><i class="bx bx-search"></i></span>
+    </ul>
+  </div>
+  <div class="product-footer">
+    <a href="#"><h3>Kangundo 5 bedroom</h3></a>
+    <div class="rating">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+    <h4 class="price">Ksh30,000,000</h4>
+  </div>
+  
+
+</div>
+<div class="product">
+<div class="product-header">
+  <img src="../static/img 36.jpg"  alt="">
+  <ul class="icons">
+    <span><i class="bx bx-heart"></i></span>
+    <span><i class="bx bx-shopping-bag"></i></span>
+    <span><i class="bx bx-search"></i></span>
+  </ul>
+</div>
+<div class="product-footer">
+  <a href="#"><h3>Mombasa 4 bedroom</h3></a>
+  <div class="rating">
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bxs-star"></i>
+    <i class="bx bx-star"></i>
+  </div>
+  <h4 class="price">Ksh70,000,000</h4>
+</div>
+
+</body>
+
+
+</html>
+
+{% endblock %}
